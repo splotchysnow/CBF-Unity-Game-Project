@@ -60,8 +60,9 @@
     <Compile Include="Assets\enemyProjectileMovement.cs" />
     <Compile Include="Assets\script\PlayerScript.cs" />
     <Compile Include="Assets\script\moveForward.cs" />
-    <Compile Include="Assets\enemyCanonScript.cs" />
     <Compile Include="Assets\switchTrigger.cs" />
+    <Compile Include="Assets\enemyCanonScript.cs" />
+    <Compile Include="Assets\GUI_Script.cs" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="UnityEngine">
