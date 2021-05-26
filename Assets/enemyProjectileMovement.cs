@@ -20,13 +20,12 @@ public class enemyProjectileMovement : moveForward
         }
     }
 
-    //private void OnTriggerEnter(Collider other)
-    //{
-    //    if (other.tag == "Player") {
-    //        Destroy(other); //later call the player object and decrease health;
-    //        print("hit");
-    //        print(other);
-    //    }
-    //}
+    private void OnTriggerEnter(Collider other)
+    {
+        if (other.tag == "Player")
+        {
+            Destroy(gameObject);
+        }
+    }
 
 }
