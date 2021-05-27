@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class PlayerScript : MonoBehaviour
 {
@@ -48,6 +49,7 @@ public class PlayerScript : MonoBehaviour
         transform.Translate(Vector3.forward * verticalInput * speed * Time.deltaTime);
         transform.Translate(Vector3.right * horizontalInput * speed * Time.deltaTime);
 
+        gameOver();
 
 
     }
@@ -61,5 +63,17 @@ public class PlayerScript : MonoBehaviour
         hit();
 
         Destroy(other);
+    }
+
+    int getHealth()
+    {
+        return health;
+    }
+
+    void gameOver() {
+        if (health <= 0)
+        {
+            SceneManager.LoadScene("GameOver");
+        }
     }
 }

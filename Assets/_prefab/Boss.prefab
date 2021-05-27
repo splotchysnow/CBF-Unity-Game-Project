@@ -52,7 +52,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e71b57bcb3985a043867e4ae72818d60, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  bullet: {fileID: 0}
+  bullet: {fileID: 3099963567149097260, guid: b9a66e7c9033f25488359c09f1f1a739, type: 3}
   Cannons:
   - {fileID: 6450382501209916708}
   - {fileID: 3326516383568801560}
