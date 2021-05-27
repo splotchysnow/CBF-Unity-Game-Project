@@ -12,8 +12,31 @@ public class guiInfoScript : MonoBehaviour
     private int counter = 0;
     private List<GameObject> HeartLists = new List<GameObject>();
 
+    private int health_; // copy of the player script's heatlh variable
+
     private void Start()
+  
     {
+
+        // get the component from the script player:
+        PlayerScript playerScript = Player.GetComponent<PlayerScript>();
+        health_ = playerScript.health;
+        
+        //set up player's health GUI
+        for (int i = 0; i < health_; i++)
+        {
+            HeartLists.Add(instatiateHeart());
+        }
+
+        //takeAwayLastHeart();
+        //takeAwayLastHeart();
+        //takeAwayLastHeart();
+
+        //for (int i = 0; i < HeartLists.Count - 1; i++)
+        //{
+        //    print(HeartLists[i]);
+        //}
+
         //Initiate three heart GUI on top left when game starts
         //Instantiate(Hearts, parents.transform.position, parents.transform.rotation);
 
@@ -27,26 +50,23 @@ public class guiInfoScript : MonoBehaviour
         //Heart3.transform.parent = GameObject.Find("Canvas").transform;
 
 
-        HeartLists.Add(instatiateHeart());
-        HeartLists.Add(instatiateHeart());
-        HeartLists.Add(instatiateHeart());
-
-        takeAwayLastHeart();
     }
 
+
     //if item pick up heart+ is called, call this function and add a heart on the GUI
-    private GameObject instatiateHeart() {
+    public GameObject instatiateHeart() {
         GameObject Heart = Instantiate(Hearts, spawner.transform.position + counter * offset, Quaternion.identity) as GameObject;
         Heart.transform.parent = GameObject.Find("Canvas").transform;
         counter += 1;
-
         return Heart;
     }
 
     //Removes the last heart on the top.
-    private void takeAwayLastHeart()
+    public void takeAwayLastHeart()
     {
-        Destroy(HeartLists[HeartLists.Count-1]);
+        Destroy(HeartLists[HeartLists.Count - 1]);
+        HeartLists.RemoveAt(HeartLists.Count - 1);
+        //print(HeartLists.Count);
     }
 
 }

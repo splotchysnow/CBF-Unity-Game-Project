@@ -14,6 +14,8 @@ public class PlayerScript : MonoBehaviour
     public GameObject projectilePrefab;
     public float rotateSpeed;
 
+    public GameObject healthGUI;
+
     public int health = 10;
 
     // Update is called once per framessss
@@ -55,20 +57,22 @@ public class PlayerScript : MonoBehaviour
     }
 
     void hit() {
-        health -= 1;
+        health -= 1; //health goes down.
+        // update the health bar:
+        healthGUI.GetComponent<guiInfoScript>().takeAwayLastHeart();
+
     }
 
     private void OnTriggerEnter(Collider other)
     {
-        hit();
-
-        Destroy(other);
+        if (other.tag == "EnemyProjectile")
+        {
+            hit();
+            Destroy(other);
+        }
+        print(other.tag);
     }
 
-    int getHealth()
-    {
-        return health;
-    }
 
     void gameOver() {
         if (health <= 0)

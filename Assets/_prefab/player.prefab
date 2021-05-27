@@ -417,7 +417,7 @@ MonoBehaviour:
   speed: 10
   projectilePrefab: {fileID: 5826422597722432443, guid: 20907beafa1d841409e977ed94667d57, type: 3}
   rotateSpeed: 90
-  health: 3
+  health: 5
 --- !u!54 &909350967820772650
 Rigidbody:
   m_ObjectHideFlags: 0
