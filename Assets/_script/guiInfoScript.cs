@@ -21,6 +21,13 @@ public class guiInfoScript : MonoBehaviour
     public int switchIntCount; // the value needs to store in.
 
 
+    //timer;
+    private float point = 0;
+    public Text pointText;
+    private int minCount = 0;
+
+
+
     private void Start()
     {
 
@@ -67,6 +74,23 @@ public class guiInfoScript : MonoBehaviour
     private void LateUpdate()
     {
         updateText();
+        
+        point += Time.deltaTime;
+
+        pointText.text = "Time survived: " + minCount + " min and " + getSeconds() + " seconds";
+
+
+
+    }
+
+    public float getSeconds()
+    {
+        if (point == 60)
+        {
+            minCount += 1;
+        }
+
+        return Mathf.FloorToInt(point % 60);
     }
 
 

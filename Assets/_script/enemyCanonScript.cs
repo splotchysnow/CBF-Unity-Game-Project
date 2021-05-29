@@ -9,21 +9,45 @@ public class enemyCanonScript : MonoBehaviour
     public GameObject[] Cannons;
 
     private float timeCount = 0;
-    private float specialTimeCount = 0;
     private float bulletTimeControl = 0.01f;
 
     private AudioSource fullShotAudio;
+
+    private guiInfoScript guiScript;
+    public GameObject guiScriptObj;
+
+    private int constant1 = 1000;
+    private int constant2 = 10;
 
 
     private void Start()
     {
         fullShotAudio = GetComponent<AudioSource>();
+        guiScript = guiScriptObj.GetComponent<guiInfoScript>();
     }
 
     // Update is called once per frame
     void Update()
     {
         randomShots();
+
+        if (guiScript.getSeconds() >= 55)
+        {
+            //game gets harder;
+            constant1 = 10000;
+            constant2 = 25;
+            bulletTimeControl = 0.03f;
+        }
+        else if (guiScript.getSeconds() >= 45)
+        {
+            bulletTimeControl = 0.02f;
+        }
+        else if (guiScript.getSeconds() >= 0)
+        {
+            bulletTimeControl = 0.01f;
+            constant1 = 1000;
+            constant2 = 10;
+        }
     }
 
 
@@ -32,10 +56,10 @@ public class enemyCanonScript : MonoBehaviour
     {
         int randomValue = Random.Range(0, 10000);
 
-        if (randomValue <= 10000 - 1000) {
+        if (randomValue <= 10000 - constant1) {
             counter();
         }
-        else if (randomValue <= 10000 - 10)
+        else if (randomValue <= 10000 - constant2)
         {
             specialCounter();
         }
